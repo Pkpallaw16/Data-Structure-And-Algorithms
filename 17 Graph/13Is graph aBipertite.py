@@ -21,22 +21,22 @@ class Graph:
         def __init__(self,ver,level):
             self.ver=ver
             self.level=level
-    def Is_graph_bipatited(self,src,discovery):
+    def Is_graph_bipatited(self,src,discover_level):
         st=[]
         st.append(self.pair(src,0))
         while len(st)>0:
             pr=st.pop(0)
-            if discovery[pr.ver]!=-1:
-                if discovery[pr.ver]==pr.level:
+            if discover_level[pr.ver]!=-1:
+                if discover_level[pr.ver]==pr.level:
                     continue
                 else:
                     return False
 
-            discovery[pr.ver]=pr.level
+            discover_level[pr.ver]=pr.level
 
             for edg in self.graph[pr.ver]:
-                if discovery[edg.to_ver]==-1:
-                    st.append(self.pair(edg.to_ver,pr.dis_from_source+1))
+                if discover_level[edg.to_ver]==-1:
+                    st.append(self.pair(edg.to_ver,pr.level+1))
         return False
 
     def Input_fun(self):

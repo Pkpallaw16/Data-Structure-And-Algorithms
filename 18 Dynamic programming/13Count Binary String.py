@@ -23,7 +23,7 @@ def Count_Binary_String_tab(n):
     dp=[[0 for i in range(n)] for j in range(2)]
     dp[0][0]=1
     dp[1][0]=1
-    for i in range(n):
+    for i in range(1,n):
         dp[i][0]=dp[i-1][1]
         dp[i][1]=dp[i-1][0]+dp[i-1][1]
     return dp[n-1][0]+dp[n-1][1]
@@ -36,6 +36,7 @@ def countBinaryString_optimise(n):
         zero=n_zero
         one=n_one
     return one+zero
-print(Count_Binary_String_recursion(4,1,""))
-dp=[[0 for i in range(5)] for j in range(2)]
-print(Count_Binary_String_memoisation(4,1,dp))
+n=4
+print(Count_Binary_String_recursion(n,1,""))
+dp=[[0 for i in range(n+1)] for j in range(2)]
+print(Count_Binary_String_memoisation(n,1,dp))

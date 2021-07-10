@@ -29,6 +29,18 @@ def climb_stairs_tabulation(dp,n):
                 count+=dp[i-step]
         dp[i]=count
     return dp[n]
+def climbstair_tab2(n):
+    dp=[0 for i in range(n+1)]
+    for i in range(n+1):
+        if i==0:
+            dp[0]=1
+            continue
+        count=0
+        for j in range(1,4):
+            if i-j>=0:
+                count+=dp[i-j]
+        dp[i]=count
+    return dp[n]
 n=int(input("enter number of stairs"))
 dp=[0 for i in range(n+1)]
 print(climb_stairs_memoization(dp,0,n))

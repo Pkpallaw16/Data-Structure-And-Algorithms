@@ -31,8 +31,8 @@ def Tiling_With_Tiles_tab1(n):
         a=b
         b=c
     return a
-n=8
-print(Tiling_With_Tiles(8))
-print(Tiling_With_Tiles_tab(8))
+n=5
+print(Tiling_With_Tiles(n))
+print(Tiling_With_Tiles_tab(n))
 dp=[0 for i in range(n+1)]
 print(Tiling_With_Tiles_recursive(n,dp))

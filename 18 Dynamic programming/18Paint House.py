@@ -1,3 +1,16 @@
+def paint_house(cost):
+    red=0
+    green=0
+    blue=0
+    for i in range(len(cost)):
+        n_red=min(green,blue)+cost[i][0]
+        n_green=min(red,blue)+cost[i][1]
+        n_blue=min(red,green)+cost[i][2]
+        red=n_red
+        green=n_green
+        blue=n_blue
+    return min(n_red,n_green,n_blue)
+
 def Paint_House(paints):
     min_cost=0
     selected_paint=-1

@@ -5,7 +5,7 @@ def climb_stairs_with_minimum_moves_recursion(n,last_stair,jump):
     min_moves=int(1e9)
     for i in range(1,jump[n]+1):
         if n+i<=last_stair:
-            moves=climb_stairs_with_minimum_moves_memoization(dp, n + i,last_stair,jump)
+            moves=climb_stairs_with_minimum_moves_memoization(n + i,last_stair,jump)
             min_moves= min(moves,min_moves)
     if min_moves!=int(1e9):
         min_moves= min_moves+1
@@ -31,6 +31,18 @@ def climb_stairs_with_minimum_moves_tabulation(dp,n,jump):
         if i==n:
             dp[n]=0
             continue
+        min_moves=int(1e9)
+        for step in range(1,jump[i]+1):
+            if i+step<=n and dp[i+step]!=-1:
+                min_moves=min(min_moves,dp[i+step])
+        if min_moves!=int(1e9):
+            dp[i]=min_moves+1
+        else:
+            dp[i]=min_moves
+    return dp[0]
+def climb_stairs_with_minimum_moves_tabulation2(dp,n,jump):
+    dp[n] = 0
+    for i in range(n-1,-1,-1):
         min_moves=int(1e9)
         for step in range(1,jump[i]+1):
             if i+step<=n and dp[i+step]!=-1:

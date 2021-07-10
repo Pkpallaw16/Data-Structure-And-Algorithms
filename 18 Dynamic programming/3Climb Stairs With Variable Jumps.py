@@ -21,6 +21,13 @@ def climb_stairs_with_variable_jump_tabulation(dp,n,jump):
                 path_count+=dp[i+step]
         dp[i]=path_count
     return dp[0]
+def climb_stairs_with_variable_jump_tabulation2(dp,n,jump):
+    dp[n] = 1
+    for i in range(n-1,-1,-1):
+        for step in range(1,jump[i]+1):
+            if i+step<=n:
+                dp[i]+=dp[i+step]
+    return dp[0]
 n=int(input("enter number of stairs"))
 dp=[0 for i in range(n+1)]
 jump=[]

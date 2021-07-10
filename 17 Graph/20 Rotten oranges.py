@@ -33,7 +33,10 @@ def rotten_orange(grid):
                     st.append(Orange_pair(r,c,remove.t+1))
             size-=1
 
-    print(time)
-    print(fresh_orange)
+    if fresh_orange==0:
+        return time
+    else:
+        print(fresh_orange)
+        return -1
 grid=[[2,1,1],[0,1,1],[1,0,1]]
-rotten_orange(grid)
+print(rotten_orange(grid))

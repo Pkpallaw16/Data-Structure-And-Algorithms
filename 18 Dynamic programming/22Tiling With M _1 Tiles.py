@@ -30,8 +30,8 @@ def Tiling_With_Tiles_tab(n,m):
         else:
             dp[i]=dp[i-1]+dp[i-m]
     return dp[n]
-n=39
+n=30
 dp=[0 for i in range(n+1)]
-print(Tiling_With_Tiles(39,16))
+print(Tiling_With_Tiles(n,16))
 print(Tiling_With_Tiles_recursive(n,16,dp))
 print(Tiling_With_Tiles_tab(n,16))

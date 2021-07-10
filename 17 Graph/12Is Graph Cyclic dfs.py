@@ -23,12 +23,13 @@ class Graph:
         visited[src]=True
         for edge in self.graph[src]:
             nbr=edge.to_ver
+            if visited[nbr]==True and nbr!=parent:
+                return True
             if visited[nbr]==False:
                 res=self.Is_graph_cyclic_dfs(nbr,src,visited)
                 if res==True:
                     return True
-            elif nbr!=parent:
-                return True
+
         return False
 
     def fun_input(self):

@@ -9,8 +9,7 @@ def coin_change_combination_recursion(coins,target,indx,psf):
         count+=coin_change_combination_recursion(coins,target-coins[indx],indx,psf+str(coins[indx]))
     count += coin_change_combination_recursion(coins, target, indx+1, psf)
     return count
-def coin_change_combination_memoization(coins,target,indx,psf):
-    dp=[0 for i in range(target+1)]
+def coin_change_combination_memoization(coins,target,indx,psf,dp):
     if target==0:
         print(psf)
         dp[target]=1
@@ -23,8 +22,8 @@ def coin_change_combination_memoization(coins,target,indx,psf):
     count=0
 
     if target-coins[indx]>=0:
-        count+=coin_change_combination_memoization(coins,target-coins[indx],indx,psf+str(coins[indx]))
-    count += coin_change_combination_memoization(coins, target, indx+1, psf)
+        count+=coin_change_combination_memoization(coins,target-coins[indx],indx,psf+str(coins[indx]),dp)
+    count += coin_change_combination_memoization(coins, target, indx+1, psf,dp)
     dp[target]= count
     return dp[target]
 def coin_change_combination_tabulation(coins,target):
@@ -54,7 +53,8 @@ coins=[2,3,5,6]
 target=7
 dp=[0 for i in range(target+1)]
 print(coin_change_combination_recursion(coins,target,0,""))
-print(coin_change_combination_memoization(coins,target,0,""))
+dp=[0 for i in range(target+1)]
+print(coin_change_combination_memoization(coins,target,0,"",dp))
 print(coin_change_combination_tabulation(coins,target))
 dp=[[0 for i in range(target+1)] for j in range(len(coins)+1)]
 print(coin_change_combination_tab2(coins,target,dp))
