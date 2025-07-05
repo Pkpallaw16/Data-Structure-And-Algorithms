@@ -2,7 +2,7 @@
 
 This repository contains a number of examples using following data structures and algorithms.
 
-Data Strcutures:
+Data Structures:
 - String
 - Array
 - Linked List
